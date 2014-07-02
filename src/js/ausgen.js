@@ -1,19 +1,29 @@
 var doc;
 var photo;
 var agencies = {
-	"bverf": {
-		  title: "Bundesamt für Verfassungsschutz (BVerf)"
-		, street: "Strasse"
-		, city: "Stadt"
-		, zipcode: "PLZ"
-		, country: "Germany"
+	"LVS Berlin": {
+		  title: "Senatsverwaltung für Inneres"
+		, subtitle: "Abteilung II – Verfassungsschutz"
+		, street: "Postfach 62 05 60"
+		, zipcode: "10795"
+		, city: "Berlin"
+		, country: "Deutschland"
+		, tel: "030 90 129-111"
+		, fax:  "030 90 129-844"
+		, law: "§ 31, Abs. 1 des Gesetzes über den Verfassungsschutz in Berlin und § 16 Berliner Datenschutzgesetz"
+
 	}
-	, "bawue": {
-		  title: "Landesamt für Verfassungsschutz BaWü"
-		, street: "Strasse"
-		, city: "Stadt"
-		, zipcode: "PLZ"
-		, country: "Germany"
+	, "LVS Brandenburg": {
+		  title: "Ministerium des Inneren des Landes Brandenburg"
+		, subtitle: "Abteilung Verfassungsschutz"
+		, street: "Posfach 60 11 26"
+		, zipcode: "14411"
+		, city: "Potsdam"
+		, country: "Deutschland"
+		, tel: "0331 866 - 2500"
+		, fax: "0331 866 – 2599"
+		, law: "§ 18 Brandenburgischen Datenschutzgesetze und § 12, Abs. 1 Brandenburgisches Verfassungsschutzgesetzes"
+		, mail: "info@verfassungsschutz-brandenburg.de"
 	}
 }
 var addr = {
@@ -103,11 +113,12 @@ console.log(cnt);
 	var rcvr = 
 		  receiver.title + crlf 
 		+ receiver.street + crlf 
-		+ receiver.zipcode + " " + receiver.city
-		+ crlf + receiver.country;
+		+ receiver.zipcode + " " + receiver.city + crlf
+		+ receiver.country;
 	doc.text(20, 44.7, rcvr);
 
-	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + texts[0] + crlf
+	var body = texts[0].replace("$rechtsgrundlage$", receiver.law);
+	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + body + crlf
 			+ crlf + addr.name;
 	//doc.text(25, 95.46, txt);
 	var lines = doc.splitTextToSize(txt, 155)
