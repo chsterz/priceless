@@ -1,20 +1,21 @@
-var agencies = [
-	{
+var crlf = "\r\n";
+var agencies = {
+	"bverf": {
 		  title: "Bundesamt für Verfassungsschutz (BVerf)"
 		, street: "Strasse"
 		, city: "Stadt"
 		, zipcode: "PLZ"
 		, country: "Germany"
 	}
-	, {
+	, "bawue": {
 		  title: "Landesamt für Verfassungsschutz BaWü"
 		, street: "Strasse"
 		, city: "Stadt"
 		, zipcode: "PLZ"
 		, country: "Germany"
 	}
-]
-
+}
+var photo;
 var doc = new jsPDF('p', 'mm', 'a4');
 var addr = {
 	  name: ''
@@ -23,7 +24,21 @@ var addr = {
 	, zipcode: ''
 }
 
-function generateLetter() {
+function generateLetters() {
+	var receivers = [];
+	$("input[name='agencies[]']:checked").each(function() {
+		//checked_agencies.push($(this).val());
+		//console.log($(this).val());
+
+		receivers.push( agencies[$(this).val()] );
+	});
+
+	console.log(receivers);
+	for (var r in receivers)
+		generateLetter(receivers[r]);
+}
+
+function generateLetter(receiver) {
 	// letter layout according to http://upload.wikimedia.org/wikipedia/commons/6/64/DIN_5008%2C_Form_A.svg
 
 	// faltmarken 
@@ -47,13 +62,21 @@ function generateLetter() {
 	doc.text(20, 27, send_back_to);
 	console.log(send_back_to);
 
+	doc.setFontSize(12);
+	var rcvr = 
+		  receiver.title + crlf 
+		+ receiver.street + crlf 
+		+ receiver.zipcode + receiver.city
+		+ crlf + receiver.country;
+	doc.text(20, 44.7, rcvr);
+
+	doc.text(25, 95.46, 'text');
 
 	doc.addPage();
 	doc.text(20, 20, 'Do you like that?');
 	if (photo)
 		doc.addImage(photo, 'JPEG', 15, 40, 180, 160);
 }
-var photo;
 
 function getPhoto(evt) {
 	console.log('getphoto');
@@ -84,14 +107,14 @@ function getPhoto(evt) {
 
 function updatePane() {
 	if (typeof doc !== 'undefined') {
-		generateLetter();
+		generateLetters();
 		var string = doc.output('datauristring');
 		$('.preview-pane').attr('src', string);
 	}
 }
 
 function savePDF() {
-	generateLetter();
+	generateLetters();
 	doc.save('anschreiben.pdf');
 }
 
@@ -101,7 +124,7 @@ $(function() {
 		var html = '\
 			<div class="checkbox">\
 			<label>\
-				<input type="checkbox"> ' + agency.title + '</label>\
+				<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '</label>\
 			</div>\
 		';
 		$("#agencies").append(html);
