@@ -34,6 +34,11 @@ function generateLetters() {
 		receivers.push( agencies[$(this).val()] );
 	});
 
+	if (receivers.length === 0) {
+		alert('Sie haben kein Amt ausgewählt.');
+		return;
+	}
+
 	console.log(receivers);
 	var cnt = 0;
 	for (var r in receivers) {
@@ -142,12 +147,12 @@ $(function() {
 		var html = '\
 			<div class="checkbox">\
 			<label>\
-				<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '</label>\
+				<input checked="checked" name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '</label>\
 			</div>\
 		';
 		$("#agencies").append(html);
 	}
-	//$('body').on('change', 'passport_photo', getPhoto);
+
 	document.getElementById('passport_photo').addEventListener('change', getPhoto, false);
 
 });
