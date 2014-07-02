@@ -30,43 +30,46 @@
 				<div id="agencies"></div>
 			</div>
 
-			<h2>Schritt 2: Ihre Daten</h2>	
+			<br/>
+			<h2>Schritt 2: Daten</h2>	
 			<div class="form-group">
-				<label for="addr_name">Ihr Name</label>
+				<label for="addr_name">Name</label>
 				<input type="text" class="form-control" id="addr_name" placeholder="Max Mustermann">
 			</div>
 			<div class="form-group">
-				<label for="addr_street">Ihre Stra&szlig;e</label>
+				<label for="addr_street">Stra&szlig;e</label>
 				<input type="text" class="form-control" id="addr_street" placeholder="Musterstr.  13">
 			</div>
 			<div class="form-group">
-				<label for="addr_street">Ihre Postleitzahl</label>
+				<label for="addr_street">Postleitzahl</label>
 				<input type="text" class="form-control" id="addr_zipcode" placeholder="12345">
 			</div>
 			<div class="form-group">
-				<label for="addr_street">Ihre Stadt</label>
+				<label for="addr_street">Stadt</label>
 				<input type="text" class="form-control" id="addr_city" placeholder="Musterstadt">
 			</div>
 			<div class="form-group">
-				<label for="addr_street">Ihre Geburtsstadt</label>
+				<label for="addr_street">Geburtsstadt</label>
 				<input type="text" class="form-control" id="addr_birthcity" placeholder="Musterstadt">
 			</div>
 			<div class="form-group">
-				<label for="addr_street">Ihr Geburtsdatum</label>
+				<label for="addr_street">Geburtsdatum</label>
 				<input type="text" class="form-control" id="addr_birthdate" placeholder="11.02.76">
 			</div>
-			<div class="form-group">
-				<label for="passport_photo">Ihr Ausweis (Foto oder Scan)</label>
+			<div class="form-group hidden">
+				<label for="passport_photo">Ausweis (Foto oder Scan)</label>
 				<input type="file" class="form-control" id="passport_photo">
 			</div>
 
 
-			<h2>Vorschau</h2>
+			<br/>
+			<h2>Schritt 3: PDF generieren</h2>
 			<button onclick="javascript:updatePane();return false;" class="btn btn-default">Vorschau anzeigen</button>
 			<button onclick="javascript:savePDF();return false;" class="btn btn-default">PDF speichern</button>
 
 			<iframe class="preview-pane" width="100%" height="650" frameborder="0" style="margin-top:10px;"></iframe>
 		</form>
+		<br/><br/>
 	</div>
 
 
