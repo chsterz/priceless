@@ -16,7 +16,7 @@ var agencies = {
 	}
 }
 var photo;
-var doc = new jsPDF('p', 'mm', 'a4');
+var doc;
 var addr = {
 	  name: ''
 	, street: ''
@@ -26,6 +26,7 @@ var addr = {
 
 function generateLetters() {
 	var receivers = [];
+	console.log("gernat");
 	$("input[name='agencies[]']:checked").each(function() {
 		//checked_agencies.push($(this).val());
 		//console.log($(this).val());
@@ -34,12 +35,22 @@ function generateLetters() {
 	});
 
 	console.log(receivers);
-	for (var r in receivers)
-		generateLetter(receivers[r]);
+	var cnt = 0;
+	for (var r in receivers) {
+		generateLetter(receivers[r], cnt++);
+	}
 }
 
-function generateLetter(receiver) {
+function generateLetter(receiver, cnt) {
+console.log(cnt);
 	// letter layout according to http://upload.wikimedia.org/wikipedia/commons/6/64/DIN_5008%2C_Form_A.svg
+	if (cnt === 0) 
+		doc = new jsPDF('p', 'mm', 'a4');
+	else 
+		doc.addPage();
+
+	if (typeof doc == 'undefined') 
+		alert('Error within PDF generation. Your browser does not seem to support this operation. If possible, please try another one.')
 
 	// faltmarken 
 	doc.setLineWidth(0.5);
@@ -52,10 +63,10 @@ function generateLetter(receiver) {
 	//doc.text(20, 20, 'Hello world!');
 	//doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
 
-	addr.name = $("#addr_name").val();
-	addr.street = $("#addr_street").val();
-	addr.zipcode = $("#addr_zipcode").val();
-	addr.city = $("#addr_city").val();
+	addr.name = $("#addr_name").val() || 'Max Mustermann';
+	addr.street = $("#addr_street").val() || 'Musterstr. 1';
+	addr.zipcode = $("#addr_zipcode").val() || '12345';
+	addr.city = $("#addr_city").val() || 'Musterstadt';
 	var send_back_to = [addr.name, addr.street, addr.zipcode, addr.city].join(', ');
 
 	doc.setFontSize(10);
@@ -63,6 +74,11 @@ function generateLetter(receiver) {
 	console.log(send_back_to);
 
 	doc.setFontSize(12);
+	var now = new Date();
+	var date = "Datum: " + now.getDate() + "." + now.getMonth() + "." + now.getFullYear();
+	var sender = [addr.name, addr.street, addr.zipcode, addr.city, date].join(crlf);
+	doc.text(125, 32, sender);
+
 	var rcvr = 
 		  receiver.title + crlf 
 		+ receiver.street + crlf 
@@ -70,12 +86,12 @@ function generateLetter(receiver) {
 		+ crlf + receiver.country;
 	doc.text(20, 44.7, rcvr);
 
-	doc.text(25, 95.46, 'text');
+	doc.text(25, 95.46, 'Betreff: Antrag auf Aktenauskunft');
 
-	doc.addPage();
-	doc.text(20, 20, 'Do you like that?');
-	if (photo)
+	if (photo) {
+		doc.addPage();
 		doc.addImage(photo, 'JPEG', 15, 40, 180, 160);
+	}
 }
 
 function getPhoto(evt) {
@@ -106,8 +122,9 @@ function getPhoto(evt) {
 }
 
 function updatePane() {
+	generateLetters();
+
 	if (typeof doc !== 'undefined') {
-		generateLetters();
 		var string = doc.output('datauristring');
 		$('.preview-pane').attr('src', string);
 	}
@@ -120,6 +137,7 @@ function savePDF() {
 
 $(function() {
 	for (var a in agencies) {
+		console.log(a);
 		var agency = agencies[a];
 		var html = '\
 			<div class="checkbox">\
