@@ -11,6 +11,7 @@ var agencies = {
 		, tel: "030 90 129-111"
 		, fax:  "030 90 129-844"
 		, law: "§ 31, Abs. 1 des Gesetzes über den Verfassungsschutz in Berlin und § 16 Berliner Datenschutzgesetz"
+		, text: 1
 
 	}
 	, "LVS Brandenburg": {
@@ -24,6 +25,7 @@ var agencies = {
 		, fax: "0331 866 – 2599"
 		, law: "§ 18 Brandenburgischen Datenschutzgesetze und § 12, Abs. 1 Brandenburgisches Verfassungsschutzgesetzes"
 		, mail: "info@verfassungsschutz-brandenburg.de"
+		, text: 0
 	}
 }
 var addr = {
@@ -33,7 +35,8 @@ var addr = {
 	, zipcode: ''
 }
 var crlf = "\r\n";
-var texts = ["Sehr geehrte Damen und Herren," + crlf + crlf +
+var texts = [
+"Sehr geehrte Damen und Herren," + crlf + crlf +
 "geben Sie mir bitte auf der Grundlage von $rechtsgrundlage$ schriftlich \
 Auskunft über die durch Ihre Behörde (auch im Weg der \
 Auftragsdatenverarbeitung)" + crlf + 
@@ -47,7 +50,24 @@ wurden." + crlf + crlf +
 "Schliesslich bitte ich um eine Eingangsbestätigung dieses Schreibens." + crlf +
 "Bis zu Ihrer Antwort widerspreche ich der Löschung über mich gesammelter Daten." 
 + crlf + crlf + crlf +
-"Mit freundlichen Grüßen"
+"Mit freundlichen Grüßen" + crlf
+
+, "Sehr geehrte Damen und Herren," + crlf + crlf +
+"geben Sie mir bitte auf der Grundlage von $rechtsgrundlage$ schriftlich \
+Auskunft über die durch Ihre Behörde (auch im Weg der \
+Auftragsdatenverarbeitung)" + crlf + 
+"   - zu meiner Person gespeicherten Daten," + crlf + 
+"   - den Zweck und die Rechtsgrundlage der Speicherung," + crlf + 
+"   - die Herkunft der Daten und die empfangenden Stellen oder Kategorien \
+von empfangenden Stellen, an die Daten übermittelt werden oder \
+wurden." + crlf + crlf +
+"Mit diesem Brief übersende ich Ihnen eine Personalausweiskopie. " +
+"Bitte teilen Sie mir ggfs. auch mit, auf welcher Rechtsgrundlage Daten \
+über mich übermittelt wurden." + crlf + crlf +
+"Schliesslich bitte ich um eine Eingangsbestätigung dieses Schreibens. " + 
+"Bis zu Ihrer Antwort widerspreche ich der Löschung über mich gesammelter Daten." 
++ crlf + crlf + crlf +
+"Mit freundlichen Grüßen" + crlf
 ];
 
 function generateLetters() {
@@ -117,7 +137,7 @@ console.log(cnt);
 		+ receiver.country;
 	doc.text(20, 44.7, rcvr);
 
-	var body = texts[0].replace("$rechtsgrundlage$", receiver.law);
+	var body = texts[ receiver.text ].replace("$rechtsgrundlage$", receiver.law);
 	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + body + crlf
 			+ crlf + addr.name;
 	//doc.text(25, 95.46, txt);
