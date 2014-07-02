@@ -1,4 +1,5 @@
-var crlf = "\r\n";
+var doc;
+var photo;
 var agencies = {
 	"bverf": {
 		  title: "Bundesamt für Verfassungsschutz (BVerf)"
@@ -15,14 +16,29 @@ var agencies = {
 		, country: "Germany"
 	}
 }
-var photo;
-var doc;
 var addr = {
 	  name: ''
 	, street: ''
 	, city: ''
 	, zipcode: ''
 }
+var crlf = "\r\n";
+var texts = ["Sehr geehrte Damen und Herren," + crlf + crlf +
+"geben Sie mir bitte auf der Grundlage von $rechtsgrundlage$ schriftlich \
+Auskunft über die durch Ihre Behörde (auch im Weg der \
+Auftragsdatenverarbeitung)" + crlf + 
+"   - zu meiner Person gespeicherten Daten," + crlf + 
+"   - den Zweck und die Rechtsgrundlage der Speicherung," + crlf + 
+"   - die Herkunft der Daten und die empfangenden Stellen oder Kategorien \
+von empfangenden Stellen, an die Daten übermittelt werden oder \
+wurden." + crlf + crlf +
+"Bitte teilen Sie mir ggfs. auch mit, auf welcher Rechtsgrundlage Daten \
+über mich übermittelt wurden." + crlf + crlf +
+"Schliesslich bitte ich um eine Eingangsbestätigung dieses Schreibens." + crlf +
+"Bis zu Ihrer Antwort widerspreche ich der Löschung über mich gesammelter Daten." 
++ crlf + crlf + crlf +
+"Mit freundlichen Grüßen"
+];
 
 function generateLetters() {
 	var receivers = [];
@@ -72,7 +88,7 @@ console.log(cnt);
 	addr.street = $("#addr_street").val() || 'Musterstr. 1';
 	addr.zipcode = $("#addr_zipcode").val() || '12345';
 	addr.city = $("#addr_city").val() || 'Musterstadt';
-	var send_back_to = [addr.name, addr.street, addr.zipcode, addr.city].join(', ');
+	var send_back_to = [addr.name, addr.street, addr.zipcode + " " + addr.city].join(', ');
 
 	doc.setFontSize(10);
 	doc.text(20, 27, send_back_to);
@@ -81,17 +97,21 @@ console.log(cnt);
 	doc.setFontSize(12);
 	var now = new Date();
 	var date = "Datum: " + now.getDate() + "." + now.getMonth() + "." + now.getFullYear();
-	var sender = [addr.name, addr.street, addr.zipcode, addr.city, date].join(crlf);
+	var sender = [addr.name, addr.street, addr.zipcode + " " + addr.city, date].join(crlf);
 	doc.text(125, 32, sender);
 
 	var rcvr = 
 		  receiver.title + crlf 
 		+ receiver.street + crlf 
-		+ receiver.zipcode + receiver.city
+		+ receiver.zipcode + " " + receiver.city
 		+ crlf + receiver.country;
 	doc.text(20, 44.7, rcvr);
 
-	doc.text(25, 95.46, 'Betreff: Antrag auf Aktenauskunft');
+	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + texts[0] + crlf
+			+ crlf + addr.name;
+	//doc.text(25, 95.46, txt);
+	var lines = doc.splitTextToSize(txt, 155)
+	doc.text(25, 95.46, lines)
 
 	if (photo) {
 		doc.addPage();
