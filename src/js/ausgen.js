@@ -16,14 +16,12 @@ var agencies = [
 ]
 
 var doc = new jsPDF();
+
 function generateLetter() {
 	doc.text(20, 20, 'Hello world!');
 	doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
 	doc.addPage();
 	doc.text(20, 20, 'Do you like that?');
-
-	// Save the PDF
-	//doc.save('Test.pdf');
 }
 
 function updatePane() {
@@ -31,8 +29,12 @@ function updatePane() {
 		generateLetter();
 		var string = doc.output('datauristring');
 		$('.preview-pane').attr('src', string);
-		console.log(string);
 	}
+}
+
+function savePDF() {
+	generateLetter();
+	doc.save('anschreiben.pdf');
 }
 
 $(function() {
