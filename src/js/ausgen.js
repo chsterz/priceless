@@ -10,6 +10,7 @@ var agencies = {
 		, country: "Deutschland"
 		, tel: "030 90 129-111"
 		, fax:  "030 90 129-844"
+		, www: "http://www.berlin.de/sen/inneres/verfassungsschutz/"
 		, law: "§ 31, Abs. 1 des Gesetzes über den Verfassungsschutz in Berlin und § 16 Berliner Datenschutzgesetz"
 		, text: 1
 
@@ -23,8 +24,23 @@ var agencies = {
 		, country: "Deutschland"
 		, tel: "0331 866 - 2500"
 		, fax: "0331 866 – 2599"
+		, www: "http://www.verfassungsschutz.brandenburg.de"
 		, law: "§ 18 Brandenburgischen Datenschutzgesetze und § 12, Abs. 1 Brandenburgisches Verfassungsschutzgesetzes"
 		, mail: "info@verfassungsschutz-brandenburg.de"
+		, text: 0
+	}
+	, "LVS Bremen": {
+		  title: "Landesamt für Verfassungsschutz Bremen"
+		, subtitle: ""
+		, street: "Flughafenallee 23"
+		, zipcode: "28199" 
+		, city: "Bremen"
+		, tel: "0421 5377-0"
+		, fax: "0421 5377-195"
+		, law: "§ 16 Bremisches Verfassungsschutzgesetz (BremVerfSchG) und § 21 Bremischen Datenschutzgesetzes (BremDSG)"
+		, country: "Deutschland"
+		, mail: "office@lfv.bremen.de"
+		, www: "http://www.verfassungsschutz.bremen.de/"
 		, text: 0
 	}
 }
@@ -153,7 +169,7 @@ console.log(cnt);
 	addr.birthdate = $("#addr_birtdate").val() || '01.01.1970';
 	addr.birthplace = $("#addr_birthplace").val() || 'Musterstadt';
 	var send_back_to = [addr.name, addr.street, addr.zipcode + " " + addr.city].join(', ');
-	var lines_send_back_to = doc.splitTextToSize(send_back_to, 80)
+	var lines_send_back_to = doc.splitTextToSize(send_back_to, 80);
 
 	doc.setFontSize(9);
 	doc.text(25, 27, lines_send_back_to);
@@ -170,10 +186,13 @@ console.log(cnt);
 	var lines_sender = doc.splitTextToSize(sender, 75)
 	doc.text(125, 32, lines_sender);
 
-	var rcvr = 
-		  receiver.title + crlf 
-		+ receiver.subtitle + crlf 
-		+ receiver.street + crlf 
+	var rcvr = receiver.title + crlf;
+
+	if (receiver.subtitle)
+		rcvr += receiver.subtitle + crlf;
+
+	rcvr +=
+		  receiver.street + crlf 
 		+ receiver.zipcode + " " + receiver.city + crlf
 		+ receiver.country;
 	//doc.text(25, 44.7, rcvr);
