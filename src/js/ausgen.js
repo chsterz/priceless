@@ -1,5 +1,8 @@
 var doc;
 var photo;
+// text1: Standardvorlage 2 (mit Perso) (LVS Berlin/LVS Sachsen-Anhalt/BKA)
+// text2: Standardvorlage Sonderfall (BVerf/BND/MAD/LVS Thü/ LVS BaWü)
+// text0: rest
 var agencies = {
 	"LVS Berlin": {
 		  title: "Senatsverwaltung für Inneres"
@@ -41,6 +44,20 @@ var agencies = {
 		, country: "Deutschland"
 		, mail: "office@lfv.bremen.de"
 		, www: "http://www.verfassungsschutz.bremen.de/"
+		, text: 0
+	}
+	, "LVS Hamburg": {
+		  title: "Hamburger Landesamt für Verfassungsschutz"
+		, street: "Johanniswall 4"
+		, zipcode: "20095"
+		, city: "Hamburg"
+		, tel: "040 244443"
+		, fax: "040 338360"
+		, mail: "poststelle@verfassungsschutz.hamburg.de"
+		, law: "§ 23, Abs. 1 des Hamburgischen Verfassungsschutzgesetzes (HmbVerfSchG) und § 18 Hamburgisches Datenschutzgesetz (HmbDSG)"
+		, www: "http://www.hamburg.de/verfassungsschutz/"
+		, subtitle: ""
+		, country: "Deutschland"
 		, text: 0
 	}
 }
@@ -265,11 +282,30 @@ $(function() {
 	for (var a in agencies) {
 		console.log(a);
 		var agency = agencies[a];
+		var br = "<br/>";
+		var rcvr = agency.title + br;
+
+		if (agency.subtitle)
+			rcvr += agency.subtitle + br;
+
+		rcvr += br;
+
+		rcvr +=
+			  agency.street + br 
+			+ agency.zipcode + " " + agency.city + br
+			+ agency.country + br;
+
+		if (agency.www)
+			rcvr += "<a href='" + agency.www + "'>" + agency.www + "</a>";
+
 		var html = '\
+		<div class="form-group col-lg-6" style="margin-bottom:5px;">\
 			<div class="checkbox">\
-			<label>\
-				<input checked="checked" name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '</label>\
+				<label>\
+					<input checked="checked" name="agencies[]" value="' + a + '" type="checkbox"> ' + rcvr + '\
+					</label>\
 			</div>\
+		</div>\
 		';
 		$("#agencies").append(html);
 	}
