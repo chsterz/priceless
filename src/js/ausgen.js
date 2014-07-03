@@ -133,6 +133,9 @@ function generateLetters() {
 		return;
 	}
 
+	// check if necessary input is there?
+	// if (addr.name === '' || addr.zipcode === "" || addr.city === "" || addr.birthplace === '' || addr.birthday === ""
+
 	console.log(receivers);
 	var cnt = 0;
 	for (var r in receivers) {
