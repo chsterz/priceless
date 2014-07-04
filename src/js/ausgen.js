@@ -217,6 +217,92 @@ var agencies = {
 		, text: 0
 		, desc: "Landesamt f&uuml;r Verfassungsschutz Saarland"
 	}
+	, "LVS Sachsen": {
+		  title: "Landesamt für Verfassungsschutz Sachsen"
+		, street: "Neuländer Straße 60"
+		, zipcode: "01129" 
+		, city: "Dresden"
+		, country: "Deutschland"
+		, tel: "0351 8 58 50"
+		, fax: "0351 8 58 55 00"
+		, mail: "verfassungsschutz@lfv.smi.sachsen.de"
+		, www: "http://www.verfassungsschutz.sachsen.de/"
+		, law: "§ 9, Abs. 1 des Sächsischen Verfassungsschutzgesetzes sowie § 8, Abs. 1 Sächsisches Datenschutzgesetzes"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Sachsen"
+	}
+	, "LVS Sachsen-Anhalt": {
+		  title: "Ministerium des Innern des Landes Sachsen-Anhalt"
+		, subtitle: "Abteilung 5 – Verfassungsschutz"
+		, street: "Postfach 18 49"
+		, zipcode: "39008" 
+		, city: "Magdeburg"
+		, country: "Deutschland"
+		, tel: "0391 567-3900"
+		, fax: "0391 567-3999"
+		, law: "§14 Gesetz über den Verfassungsschutz in Sachsen-Anhalt sowie § 15 Landesdatenschutzgesetz Sachsen-Anhalt"
+		, mail: "vschutz@mi.sachsen-anhalt.de"
+		, www: "http://www.mi.sachsen-anhalt.de/verfassungsschutz/"
+		, text: 1
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Sachsen-Anhalt"
+	}
+	, "LVS Schleswig-Holstein": {
+		  title: "Innenministerium des Landes Schleswig-Holstein"
+		, subtitle: "Abt. IV 7 – Verfassungsschutz"
+		, street: "Postfach 71 25"
+		, zipcode: "24171"
+		, city: "Kiel"
+		, country: "Deutschland"
+		, tel: "0431 988-3500"
+		, fax: "0431 988-3503"
+		, law: "§25 Landesverfassungsschutzgesetzes Schleswig-Holstein sowie §27 Landesdatenschutzgesetzes Schleswig-Holstein"
+		, mail: "verfassungsschutz.schleswig-holstein@im.landsh.de"
+		, www: "http://www.schleswig-holstein.de/IM/DE/InnereSicherheit/Verfassungsschutz/Verfassungsschutz_node.html"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Schleswig-Holstein"
+	}
+	, "LVS Bayern": {
+		  title: "Bayrisches Landesamt für Verfassungsschutz"
+		, street: "Knorrstr. 139"
+		, zipcode: "80937" 
+		, city: "München"
+		, country: "Deutschland"
+		, tel: "089 312 01 - 0"
+		, fax: "089 312 01 - 380"
+		, law: "Art. 11 Bayerisches Verfassungsschutzgesetz sowie Art. 10 Bayerisches Datenschutzgesetz"
+		, mail: "poststelle@lfv.bayern.de"
+		, www: "http://www.verfassungsschutz.bayern.de/"
+		, text: 2
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Bayern"
+	}
+	, "LVS Thueringen": {
+		  title: "Landesamt für Verfassungsschutz"
+		, street: "Haarbergstraße 61 "
+		, zipcode: "99097"
+		, city: "Erfurt"
+		, country: "Deutschland"
+		, mail: "kontakt@tlfv.thueringen.de"
+		, www: "http://www.thueringen.de/th3/verfassungsschutz/"
+		, tel: "0361 4406-122"
+		, fax: "0361 4406-251"
+		, law: "§ 11 Thüringer  Verfassungsschutzgesetz sowie § 13Thüringer Datenschutzgesetz"
+		, text: 2
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Th&uuml;hringen"
+	}
+	, "LVS Baden-Wuerttemberg": {
+		  title: "Landesamt für Verfassungsschutz"
+		, street: "Taubenheimstr. 85A"
+		, zipcode: "70372"
+		, city: "Stuttgart"
+		, country: "Deutschland"
+		, tel: "0711 9544 - 00"
+		, fax: "0711 9544 - 444"
+		, mail: "info@lfvbw.bwl.de"
+		, www: "http://www.verfassungsschutz-bw.de/"
+		, law: "§ 13 Gesetz über den Verfassungsschutz in Baden-Württemberg § 21 Landesdatenschutzgesetz Baden-Würtemberg"
+		, text: 2
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Baden-W&uuml;rttemberg"
+	}
 }
 var addr = {
 	  name: ''
@@ -443,7 +529,6 @@ function savePDF() {
 
 $(function() {
 	for (var a in agencies) {
-		console.log(a);
 		var agency = agencies[a];
 		var br = "<br/>";
 		/*
