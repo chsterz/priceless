@@ -199,7 +199,7 @@ console.log(cnt);
 
 	doc.setFontSize(10);
 	var now = new Date();
-	var date = crlf + "Datum: " + now.getDate() + "." + now.getMonth() + "." + now.getFullYear();
+	var date = crlf + "Datum: " + now.getDate() + "." + (now.getMonth()+1) + "." + now.getFullYear();
 	var birthdate = "Geboren am " + addr.birthdate + ", in " + addr.birthplace;
 	var sender = [addr.name, addr.street, addr.zipcode + " " + addr.city, birthdate, date].join(crlf);
 	//doc.text(125, 32, sender);
@@ -283,6 +283,7 @@ $(function() {
 		console.log(a);
 		var agency = agencies[a];
 		var br = "<br/>";
+		/*
 		var rcvr = agency.title + br;
 
 		if (agency.subtitle)
@@ -297,12 +298,13 @@ $(function() {
 
 		if (agency.www)
 			rcvr += "<a href='" + agency.www + "'>" + agency.www + "</a>";
+		*/
 
 		var html = '\
 		<div class="form-group col-lg-6" style="margin-bottom:5px;">\
 			<div class="checkbox">\
 				<label>\
-					<input checked="checked" name="agencies[]" value="' + a + '" type="checkbox"> ' + rcvr + '\
+					<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '\
 					</label>\
 			</div>\
 		</div>\
