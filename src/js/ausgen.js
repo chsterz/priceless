@@ -17,7 +17,7 @@ var agencies = {
 		, mail: "bfvinfo@verfassungsschutz.de"
 		, www: "http://www.verfassungsschutz.de/"
 		, text: 2
-
+		, desc: "Bundesamt f&uuml;r Verfassungsschutz (BVerf)"
 	}
 	, "MAD": {
 		  title: "Bundesministerium der Verteidigung"
@@ -32,6 +32,7 @@ var agencies = {
 		, mail: "MAD-Amt@t-online.de"
 		, www: "http://www.kommando.streitkraeftebasis.de/portal/a/kdoskb/!ut/p/c4/04_SB8K8xLLM9MSSzPy8xBz9CP3I5EyrpHK94uyk-OyUfL3y1MySlOKS4hK93MQU_YJsR0UABos3fg!!/"
 		, text: 2
+		, desc: "MAD"
 	}
 	, "BND": {
 		  title: "Bundesnachrichtendienst BND"
@@ -45,6 +46,7 @@ var agencies = {
 		, www: "Htt bnd.dep://www.bnd.bund.de/DE/_Home/home_node.html /"
 		, law: "§ 7 BNDG, § 15 Bundesverfassungsschutzgesetz sowie § 19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
 		, text: 2
+		, desc: "BND"
 	}
 	, "BKA" : {
 		title: "Bundeskriminalamt"
@@ -54,6 +56,7 @@ var agencies = {
 		, country: "Deutschland"
 		, law: "§12, Abs. 5 Bundeskriminalamtgesetz (BKAG), §10, Abs. 2 ATDG sowie §19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
 		, text: 1
+		, desc: "BKA"
 	}
 	, "Bpol": {
 		  title: "Bundespolizei"
@@ -67,6 +70,7 @@ var agencies = {
 		, www: "http://www.bundespolizei.de"
 		, law: "§19, Abs. 1 Bundesdatenschutzgesetz (BDSG)" 
 		, text: 1
+		, desc: "BPol"
 	}
 	, "LVS Berlin": {
 		  title: "Senatsverwaltung für Inneres"
@@ -80,7 +84,7 @@ var agencies = {
 		, www: "http://www.berlin.de/sen/inneres/verfassungsschutz/"
 		, law: "§ 31, Abs. 1 des Gesetzes über den Verfassungsschutz in Berlin und § 16 Berliner Datenschutzgesetz"
 		, text: 1
-
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Berlin"
 	}
 	, "LVS Brandenburg": {
 		  title: "Ministerium des Inneren des Landes Brandenburg"
@@ -95,6 +99,7 @@ var agencies = {
 		, law: "§ 18 Brandenburgischen Datenschutzgesetze und § 12, Abs. 1 Brandenburgisches Verfassungsschutzgesetzes"
 		, mail: "info@verfassungsschutz-brandenburg.de"
 		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Brandenburg"
 	}
 	, "LVS Bremen": {
 		  title: "Landesamt für Verfassungsschutz Bremen"
@@ -109,6 +114,7 @@ var agencies = {
 		, mail: "office@lfv.bremen.de"
 		, www: "http://www.verfassungsschutz.bremen.de/"
 		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Bremen"
 	}
 	, "LVS Hamburg": {
 		  title: "Hamburger Landesamt für Verfassungsschutz"
@@ -123,6 +129,21 @@ var agencies = {
 		, subtitle: ""
 		, country: "Deutschland"
 		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Hamburg"
+	}
+	, "LVS NS": {
+		  title: "Niedersächsisches Ministerium für Inneres, Sport und Integration"
+		, subtitle: "Abteilung Verfassungsschutz"
+		, street: "Büttner Straße 28"
+		, zipcode: "30165"
+		, city: "Hannover"
+		, tel: "0511 - 6709-0"
+		, fax: "0511 - 6709-388"
+		, www: "http://www.verfassungsschutz.niedersachsen.de/"
+		, country: "Deutschland"
+		, law: "§ 13, Abs. 1 Gesetz über den Verfassungsschutz im Lande Niedersachsen und § 16 Niedersächsisches Datenschutzgesetz (NDSG)"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Niedersachsen"
 	}
 }
 var addr = {
@@ -374,7 +395,7 @@ $(function() {
 		<div class="form-group col-lg-6" style="margin-bottom:5px;">\
 			<div class="checkbox">\
 				<label>\
-					<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.title + '\
+					<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.desc + '\
 					</label>\
 			</div>\
 		</div>\
