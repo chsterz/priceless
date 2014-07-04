@@ -60,6 +60,57 @@ var agencies = {
 		, country: "Deutschland"
 		, text: 0
 	}
+	, "Bundesamt VS": {
+		  title: "Bundesamt für Verfassungsschutz"
+		, subtitle: "Datenschutzreferat"
+		, street: "Merianstraße 100"
+		, zipcode: "50765"
+		, country: "Deutschland"
+		, city: "Köln"
+		, tel: "0221 792-0"
+		, fax: "0221 792-2915"
+		, law: "§15 Bundesverfassungsschutzgesetz (BverfSchG) sowie § 19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
+		, mail: "bfvinfo@verfassungsschutz.de"
+		, www: "http://www.verfassungsschutz.de/"
+		, text: 2
+
+	}
+	, "MAD": {
+		  title: "Bundesministerium der Verteidigung"
+		, subtitle: "Amt für den Militärischen Abschirmdienst"
+		, street: "Postfach 100203"
+		, zipcode: "50442"
+		, city: "Köln"
+		, country: "Deutschland"
+		, tel: "221 9371 - 2500"
+		, fax: "221 9371 - 2407"
+		, law: "§ 9 MADG, § 15 Bundesverfassungsschutzgesetz sowie § 19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
+		, mail: "MAD-Amt@t-online.de"
+		, www: "http://www.kommando.streitkraeftebasis.de/portal/a/kdoskb/!ut/p/c4/04_SB8K8xLLM9MSSzPy8xBz9CP3I5EyrpHK94uyk-OyUfL3y1MySlOKS4hK93MQU_YJsR0UABos3fg!!/"
+		, text: 2
+	}
+	, "BND": {
+		  title: "Bundesnachrichtendienst BND"
+		, subtitle: "Dienstsitz Pullach"
+		, street: "Heilmannstrasse 30"
+		, zipcode: "82049" 
+		, country: "Deutschland"
+		, city: "Pullach"
+		, tel: "089 7 93 15 67"
+		, mail: "zentrale@bundesnachrichtendienst.de"
+		, www: "Htt bnd.dep://www.bnd.bund.de/DE/_Home/home_node.html /"
+		, law: "§ 7 BNDG, § 15 Bundesverfassungsschutzgesetz sowie § 19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
+		, text: 2
+	}
+	, "BKA" : {
+		title: "Bundeskriminalamt"
+		, subtitle: "Der Datenschutzbeauftragte"
+		, zipcode: "65173"
+		, city: "Wiesbaden"
+		, country: "Deutschland"
+		, law: "§12, Abs. 5 Bundeskriminalamtgesetz (BKAG), §10, Abs. 2 ATDG sowie §19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
+		, text: 1
+	}
 }
 var addr = {
 	  name: ''
