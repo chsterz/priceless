@@ -271,7 +271,7 @@ console.log(cnt);
 	addr.street = $("#addr_street").val() || 'Musterstr. 1';
 	addr.zipcode = $("#addr_zipcode").val() || '12345';
 	addr.city = $("#addr_city").val() || 'Musterstadt';
-	addr.birthdate = $("#addr_birtdate").val() || '01.01.1970';
+	addr.birthdate = $("#addr_birthdate").val() || '01.01.1970';
 	addr.birthplace = $("#addr_birthplace").val() || 'Musterstadt';
 	var send_back_to = [addr.name, addr.street, addr.zipcode + " " + addr.city].join(', ');
 	var lines_send_back_to = doc.splitTextToSize(send_back_to, 80);
@@ -390,12 +390,15 @@ $(function() {
 		if (agency.www)
 			rcvr += "<a href='" + agency.www + "'>" + agency.www + "</a>";
 		*/
+		var checked = '';
+		if (a === "MAD")
+			checked ='checked="checked"';
 
 		var html = '\
 		<div class="form-group col-lg-6" style="margin-bottom:5px;">\
 			<div class="checkbox">\
 				<label>\
-					<input name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.desc + '\
+					<input ' + checked + ' name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.desc + '\
 					</label>\
 			</div>\
 		</div>\
