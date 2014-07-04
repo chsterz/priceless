@@ -145,6 +145,78 @@ var agencies = {
 		, text: 0
 		, desc: "Landesamt f&uuml;r Verfassungsschutz Niedersachsen"
 	}
+	, "LVS Hessen": {
+		  title: "Landesamt für Verfassungsschutz Hessen"
+		, street: "Postfach 39 05"
+		, zipcode: "65029"
+		, city: "Wiesbaden"
+		, country: "Deutschland"
+		, tel: "0611 720 - 0"
+		, fax: "0611 720 - 179"
+		, mail: "Email: pressestelle@lfv.hessen.de "
+		, www: "www.verfassungsschutz.hessen.de"
+		, law: "§ 18, Abs. 1  Hessisches Gesetz über das Landesamt für Verfassungsschutz und § 18 Hessisches Datenschutzgesetz (HDSG)"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Hessen"
+	}
+	, "LVS MeckPomm": {
+		  title: "Innenministerium Mecklenburg-Vorpommern"
+		, subtitle: "Abteilung Verfassungsschutz"
+		, street: "Postfach 11 05 52"
+		, zipcode: "19005"
+		, city: "Schwerin"
+		, country: "Deutschland"
+		, tel: "0385 - 74 20 0"
+		, fax: "0385 - 71 44 38"
+		, law: "§ 26, Abs. 1 Gesetz über den Verfassungsschutz im Lande Mecklenburg-Vorpommern und § 19, Abs. 1 Bundesdatenschutzgesetz (BDSG)"
+		, mail: "info@verfassungsschutz-mv.de"
+		, www: "www.verfassungsschutz-mv.de"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Mecklenburg-Vorpommern"
+	}
+	, "LVS NRW": {
+		  title: "Ministerium für Inneres und Kommunales NRW"
+		, subtitle: "Abteilung Verfassungsschutz"
+		, street: "Postfach 10 30 13"
+		, zipcode: "40021" 
+		, city: "Düsseldorf"
+		, country: "Deutschland"
+		, tel: "0211 - 871 - 2821"
+		, fax: "0211 - 871 - 2980"
+		, law: "§14, Abs. 1 des Gesetz über den Verfassungsschutz in Nordrhein-Westfalen § 18 Abs. 2 Datenschutzgesetz Nordrhein-Westfalen"
+		, mail: "kontakt.verfassungsschutz@mik1.nrw.de"
+		, www: "http://www.mik.nrw.de/verfassungsschutz.html"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz NRW"
+	}
+	, "LVS RLP": {
+		  title: "Ministerium des Inneren und für Sport des Landes Rheinland-Pfalz"
+		, subtitle: "Abteilung Verfassungsschutz"
+		, street: "Postfach 32 80"
+		, zipcode: "55022"
+		, city: "Mainz"
+		, country: "Deutschland"
+		, tel: "06131 16-3772"
+		, fax: "06131 16-3688"
+		, law: "§ 18, Abs. 1 Landesverfassungsschutzgesetz Rheinland-Pfalz sowie § 18 Landesdatenschutzgesetz (LDSG) Rheinland-Pfalz"
+		, mail: "Info.Verfassungsschutz@isim.rlp.de"
+		, www: "http://isim.rlp.de/sicherheit/verfassungsschutz/"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Rheinland-Pfalz"
+	}
+	, "LVS Saarland": {
+		  title: "Landesamt für Verfassungsschutz Saarland"
+		, street: "Postfach 10 20 63"
+		, zipcode: "66020"
+		, city: "Saarbrücken"
+		, country: "Deutschland"
+		, tel: "0681 3038-0"
+		, law: "§ 21, Abs. 1 Saarländischen Verfassungsschutzgesetzes sowie § 20 Saarländisches Datenschutzgesetz (SDSG)"
+		, mail: "info@lfv.saarland.de"
+		, www: "http://www.saarland.de/verfassungsschutz.htm"
+		, text: 0
+		, desc: "Landesamt f&uuml;r Verfassungsschutz Saarland"
+	}
 }
 var addr = {
 	  name: ''
