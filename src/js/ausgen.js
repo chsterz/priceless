@@ -262,8 +262,10 @@ console.log(cnt);
 	if (receiver.subtitle)
 		rcvr += receiver.subtitle + crlf;
 
+	if (receiver.street)
+		rcvr += receiver.street + crlf;
+
 	rcvr +=
-		  receiver.street + crlf 
 		+ receiver.zipcode + " " + receiver.city + crlf
 		+ receiver.country;
 	//doc.text(25, 44.7, rcvr);
