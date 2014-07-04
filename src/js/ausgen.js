@@ -391,7 +391,7 @@ $(function() {
 			rcvr += "<a href='" + agency.www + "'>" + agency.www + "</a>";
 		*/
 		var checked = '';
-		if (a === "MAD")
+		if (a === "Bundesamt VS")
 			checked ='checked="checked"';
 
 		var html = '\
