@@ -101,6 +101,7 @@ function updatePane() {
 
 	if (typeof doc !== 'undefined') {
 		var string = doc.output('datauristring');
+		$('.preview-pane').show();
 		$('.preview-pane').attr('src', string);
 	}
 }
