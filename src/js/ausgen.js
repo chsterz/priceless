@@ -137,7 +137,6 @@ $(function() {
 // photo upload function is commented out, jsPDF only supports embedding JPEGs so far
 var photo;
 function getPhoto(evt) {
-	console.log('getphoto');
 	var file = evt.target.files[0];
 	var reader = new FileReader();
 
