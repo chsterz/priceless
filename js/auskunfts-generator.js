@@ -81,7 +81,7 @@ function generateLetter(receiver, cnt) {
 
 	var attachment = "";
 	if (receiver.text === 1 || receiver.text === 2) 
-		attachment = crlf + crlf + crlf + "Anhang: Personalausweiskopie";
+		attachment = crlf + crlf + crlf + crlf + "Anhang: Personalausweiskopie";
 
 	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + crlf + body + crlf
 			+ crlf + addr.name + attachment;
