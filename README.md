@@ -1,6 +1,6 @@
 # Auskunftsgenerator
 
-See http://profemo.github.io/ausgen/src/index.html for the result.
+See http://profemo.github.io/temp/index.html for the result.
 
 
 ## License
