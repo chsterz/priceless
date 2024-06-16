@@ -1,92 +1,34 @@
 var doc;
-var addr = {
-	  name: ''
-	, street: ''
-	, city: ''
-	, zipcode: ''
-	, birthdate: ''
-	, birthplace: ''
+
+function generatePricelists() {
+  generatePricelist(pricelist)
 }
 
-function generateLetters() {
-	var receivers = [];
-	$("input[name='agencies[]']:checked").each(function() {
-		receivers.push( agencies[$(this).val()] );
-	});
-
-	if (receivers.length === 0) {
-		alert('Sie haben kein Amt ausgewählt.');
-		return;
-	}
-
-	var cnt = 0;
-	for (var r in receivers) {
-		generateLetter(receivers[r], cnt++);
-	}
-}
-
-function generateLetter(receiver, cnt) {
+function generatePricelist(pricelist) {
 	// letter layout according to http://upload.wikimedia.org/wikipedia/commons/6/64/DIN_5008%2C_Form_A.svg
-	if (cnt === 0) 
-		doc = new jsPDF('p', 'mm', 'a4');
-	else 
-		doc.addPage();
+	doc = new jsPDF('p', 'mm', 'a4');
+
 
 	if (typeof doc == 'undefined') 
 		alert('Error within PDF generation. Your browser does not seem to support this operation. If possible, please try another one.')
 
-	// folding marks 
-	doc.setLineWidth(0.5);
-	doc.line(0, 87, 10, 87);
-	doc.setLineWidth(0.5);
-	doc.line(0, 148.5, 10, 148.5);
 
-	addr.name = $("#addr_name").val() || 'Max Mustermann';
-	addr.street = $("#addr_street").val() || 'Musterstr. 1';
-	addr.zipcode = $("#addr_zipcode").val() || '12345';
-	addr.city = $("#addr_city").val() || 'Musterstadt';
-	addr.birthdate = $("#addr_birthdate").val() || '01.01.1970';
-	addr.birthplace = $("#addr_birthplace").val() || 'Musterstadt';
-	var send_back_to = [addr.name, addr.street, addr.zipcode + " " + addr.city].join(', ');
-	var lines_send_back_to = doc.splitTextToSize(send_back_to, 80);
+	var event_name = "Preisliste " + $("#event_name").val() || 'Event Name';
+	doc.setFontSize(28);
+	doc.text(25, 27, event_name);
 
-	doc.setFontSize(9);
-	doc.text(25, 27, lines_send_back_to);
+  var prices = "";
 
-	doc.setFontSize(10);
-	var now = new Date();
-	var birthdate = "Geboren am " + addr.birthdate + ", in " + addr.birthplace;
-	var sender = [addr.name, addr.street, addr.zipcode + " " + addr.city, birthdate].join(crlf);
-	var lines_sender = doc.splitTextToSize(sender, 75)
-	doc.text(125, 32, lines_sender);
+  $('.drink_line').each(function(i, obj) {
+    if ($(obj).find('.checked_field').attr('checked') == 'checked')
+    prices = prices + $(obj).find('.name_field').val() + "\t" + $(obj).find('.price_field').val() + crlf;
+  });
 
-	var date = now.getDate() + "." + (now.getMonth()+1) + "." + now.getFullYear();
-	doc.text(165, 92, date);
+	doc.setFontSize(14);
 
-	var rcvr = receiver.title + crlf;
-
-	if (receiver.subtitle)
-		rcvr += receiver.subtitle + crlf;
-
-	if (receiver.street)
-		rcvr += receiver.street + crlf;
-
-	rcvr +=
-		+ receiver.zipcode + " " + receiver.city + crlf
-		+ receiver.country;
-	var lines_rcvr = doc.splitTextToSize(rcvr, 80)
-	doc.text(25, 44.7, lines_rcvr);
-
-	var body = texts[ receiver.text ].replace("$rechtsgrundlage$", receiver.law);
-
-	var attachment = "";
-	if (receiver.text === 1 || receiver.text === 2) 
-		attachment = crlf + crlf + crlf + crlf + "Anhang: Personalausweiskopie";
-
-	var txt = 'Betreff: Antrag auf Aktenauskunft' + crlf  + crlf + crlf + body + crlf
-			+ crlf + addr.name + attachment;
+	var txt =   prices;
 	var lines = doc.splitTextToSize(txt, 155)
-	doc.text(25, 95.46, lines)
+	doc.text(25, 60.46, lines)
 
 	/*
 	if (photo) {
@@ -97,7 +39,7 @@ function generateLetter(receiver, cnt) {
 }
 
 function updatePane() {
-	generateLetters();
+	generatePricelists();
 
 	if (typeof doc !== 'undefined') {
 		var string = doc.output('datauristring');
@@ -107,35 +49,53 @@ function updatePane() {
 }
 
 function savePDF() {
-	generateLetters();
-	doc.save('anschreiben.pdf');
+	generatePricelists();
+	doc.save('preisliste.pdf');
+}
+
+function calculate50(price) {
+  if (price < 1.0) {
+    return (price + 0.5).toFixed(2);
+  } else {
+    return (price * 1.5).toFixed(2);
+  }
+}
+
+function roundup50(price){
+  return ( (Math.ceil((price*100)/50)*50)/100 ).toFixed(2);
 }
 
 $(function() {
-	for (var a in agencies) {
-		var agency = agencies[a];
+	for (var d in pricelist) {
+		var drink = pricelist[d];
 		var checked = '';
 
-		if (a === "Bundesamt VS")
-			checked ='checked="checked"';
+		checked ='checked="checked"';
 
-		var html = '\
-			<div class="form-group col-lg-6" style="margin-bottom:5px;">\
-				<div class="checkbox">\
-					<label>\
-						<input ' + checked + ' name="agencies[]" value="' + a + '" type="checkbox"> ' + agency.desc + '\
-					</label>\
+		var drinkLine = '\
+			<div class="form-group col-lg-12 drink_line" style="margin-bottom:5px;">\
+				<div class="checkbox col-lg-12">\
+				  <div class="col-md-3">\
+				    <input ' + checked + ' class="checked_field" name="pricelist[]" value="' + d + '" type="checkbox">\
+            <input type="text" class="name_field" value="' + drink.drink + '"></input>\
+					</div>\
+				  <div class="input-group col-md-2 offset-md-4">\
+					  <div class="input-group-addon">EUR</div>\
+				  	<input type="number" class="price_field"\
+				  	  min="' + roundup50(calculate50(drink.price))+'"\
+				  	  value="' + roundup50(calculate50(drink.price)) +'"\
+				  	  step="0.50"\
+				  	  placeholder="Preis" >\
+				  	</input>\
+				  	<div class="input-group-addon"> (' +calculate50(drink.price) + ')</div>\
+				  </div>\
 				</div>\
 			</div>\
 		';
-		$("#agencies").append(html);
+		$("#drinks").append(drinkLine);
 	}
-
-	//document.getElementById('passport_photo').addEventListener('change', getPhoto, false);
 });
 
-/*
-// photo upload function is commented out, jsPDF only supports embedding JPEGs so far
 var photo;
 function getPhoto(evt) {
 	var file = evt.target.files[0];
@@ -156,4 +116,3 @@ function getPhoto(evt) {
 
 	reader.readAsDataURL(file)
 }
-*/
