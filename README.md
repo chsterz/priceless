@@ -1,16 +1,11 @@
-# Auskunftsgenerator
+# Pricelist
 
-See http://profemo.github.io/ausgen/index.html for the result.
+See http://chsterz.github.io/priceless/index.html for the result.
 
 
 ## License
 
 The MIT License:
-
-	Copyright (c) 2014 
-
-		profemo
-		Michael Mueller <http://micha.elmueller.net>
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
