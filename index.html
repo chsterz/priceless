@@ -2,34 +2,19 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<title>Priceless</title>
 
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
-		<script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="js/libs/jspdf.min.js"></script>
+		<script src="js/libs/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="js/libs/jspdf.min.js" type="text/javascript"></script>
+		<script src="js/libs/bootstrap.min.js" type="text/javascript"></script>
 
-		<script type="text/javascript" src="js/data.texts.js"></script>
-		<script type="text/javascript" src="js/data.pricelist.js"></script>
-		<script type="text/javascript" src="js/auskunfts-generator.js"></script>
-
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$(".price_field").change(function () {
-					$(this).val(parseFloat($(this).val()).toFixed(2))
-				})
-			})
-		</script>
-
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="js/libs/html5shiv.min.js"></script>
-		<script src="js/libs/respond.min.js"></script>
-		<![endif]-->
+		<script src="js/pricelist.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -64,15 +49,17 @@
 					</p>
 				</div>
 
-				<form role="form" id="drinkForm">
+				<form id="drinkForm" role="form">
 					<div class="row">
 						<div class="col-lg-12">
-							<br />
 							<h2>Über die Veranstaltung</h2>
 							<div class="form-group">
 								<label for="event_name">Name der Veranstaltung</label>
 								<input
-									type="text" class="form-control" id="event_name" placeholder="Hypergraphia Festival"
+									class="form-control"
+									id="event_name"
+									placeholder="Hypergraphia Festival"
+									type="text"
 								>
 							</div>
 						</div>
@@ -91,16 +78,24 @@
 							<div class="form-group">
 								<div class="col-sm-6">
 									<input
-										type="text" class="form-control" id="custom_drink_name" placeholder="Vodka-O"
+										class="form-control"
+										id="custom_drink_name"
+										placeholder="Vodka-O"
+										type="text"
 									>
 								</div>
 								<div class="col-sm-3">
 									<input
-										type="text" class="form-control" id="custom_drink_price" placeholder="1.50 €"
-									>
+										type="number"
+										class="form-control"
+										id="custom_drink_price"
+										placeholder="1.50 €"
+										step="0.5"
+									/>
 								</div>
 								<div class="col-sm-2">
-									<button type="button" id="addCustomDrink" class="btn btn-primary">Hinzufügen</button>
+									<button class="btn btn-primary" id="addCustomDrink" type="button">Hinzufügen
+									</button>
 								</div>
 							</div>
 						</div>
@@ -119,13 +114,18 @@
 						wird &ndash; diese anzuh&auml;ngen.
 					</p>
 
-					<button onclick="javascript:updatePane();return false;" class="btn btn-default">Vorschau anzeigen
+					<button
+						class="btn btn-default"
+						onclick="updatePane()" type="button"
+					>
+						Vorschau anzeigen
 					</button>
-					<button onclick="javascript:savePDF();return false;" class="btn btn-default">PDF speichern</button>
+
+					<button class="btn btn-default" onclick="savePDF()" type="button">PDF speichern</button>
 
 					<iframe
-						class="preview-pane" width="100%" height="650" frameborder="0"
-						style="margin-top:10px;display:none;"
+						class="preview-pane" frameborder="0" height="650" style="margin-top:10px;display:none;"
+						width="100%"
 					></iframe>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 					<p class="text-muted">
 						<a href="https://github.com/netzwerkrecherche/fragdendienst">
 							<img
-								src="img/GitHub-Mark-32px.png" alt="GitHub" class="pull-right"
+								alt="GitHub" class="pull-right" src="img/GitHub-Mark-32px.png"
 								style="margin-left:10px;margin-top:5px;"
 							/>
 						</a>
@@ -159,12 +159,8 @@
 			</div>
 
 			<div class="col-sm-2">
-				<button type="button" id="clearLocalStorage" class="btn btn-danger">Preisliste vergessen</button>
+				<button class="btn btn-danger" id="clearLocalStorage" type="button">Preisliste vergessen</button>
 			</div>
 		</div>
-
-		<!-- Include all compiled plugins (below), or include individual files as needed
-		<script src="js/libs/bootstrap.min.js"></script>-->
-
 	</body>
 </html>
