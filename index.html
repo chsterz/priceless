@@ -1,149 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Priceless</title>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Priceless</title>
 
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 
-	<script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/libs/jspdf.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/jspdf.min.js"></script>
 
-	<script type="text/javascript" src="js/data.texts.js"></script>
-	<script type="text/javascript" src="js/data.pricelist.js"></script>
-	<script type="text/javascript" src="js/auskunfts-generator.js"></script>
+		<script type="text/javascript" src="js/data.texts.js"></script>
+		<script type="text/javascript" src="js/data.pricelist.js"></script>
+		<script type="text/javascript" src="js/auskunfts-generator.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-        $(".price_field").change(function() {
-            $(this).val(parseFloat($(this).val()).toFixed(2));
-        });
-    });
-  </script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$(".price_field").change(function () {
+					$(this).val(parseFloat($(this).val()).toFixed(2))
+				})
+			})
+		</script>
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	<script src="js/libs/html5shiv.min.js"></script>
-	<script src="js/libs/respond.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<h1>Priceless</h1>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="js/libs/html5shiv.min.js"></script>
+		<script src="js/libs/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<h1>Priceless</h1>
 
-				<h3>Um was geht es?</h3>
+					<h3>Um was geht es?</h3>
 
-				Rückmeldungen und Kommentare an
-				<a href="office@freiland-potsdam.de">office@freiland-potsdam.de</a>.</p>
+					Rückmeldungen und Kommentare an
+					<a href="office@freiland-potsdam.de">office@freiland-potsdam.de</a>.</p>
+				</div>
+
+				<div class="col-lg-6">
+					<h1>&nbsp;</h1>
+
+					<h3>Fragen und Antworten</h3>
+
+					<p>
+						<em>F: Warum ist das alles so teuer?</em><br />
+						A: Das freiLand ist ein solidarisches Projekt. Die CULTUS als Trägerin
+						des Projektes organisiert den Getränkeverkauf zentral.
+						Hierfür wird eine bezahlte Stelle finanziert,
+						die sich um das Sortiment und Handling der Getränke
+						im Rahmen des Gastro-Deals kümmert
+					</p>
+					<p>
+						<em>F:</em>
+					</p>
+					<p>
+						<em>A:</em>
+					</p>
+				</div>
+
+				<form role="form" id="drinkForm">
+					<div class="row">
+						<div class="col-lg-12">
+							<br />
+							<h2>Über die Veranstaltung</h2>
+							<div class="form-group">
+								<label for="event_name">Name der Veranstaltung</label>
+								<input
+									type="text" class="form-control" id="event_name" placeholder="Hypergraphia Festival"
+								>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<br />
+								<h2>freiLand Sortiment</h2>
+								<div id="drinks"></div>
+							</div>
+						</div>
+
+						<div class="col-lg-12">
+							<br />
+							<h2>Eigene Drinks</h2>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<input
+										type="text" class="form-control" id="custom_drink_name" placeholder="Vodka-O"
+									>
+								</div>
+								<div class="col-sm-3">
+									<input
+										type="text" class="form-control" id="custom_drink_price" placeholder="1.50 €"
+									>
+								</div>
+								<div class="col-sm-2">
+									<button type="button" id="addCustomDrink" class="btn btn-primary">Hinzufügen</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
 
-			<div class="col-lg-6">
-				<h1>&nbsp;</h1>
-
-				<h3>Fragen und Antworten</h3>
-
-				<p>
-				<em>F: Warum ist das alles so teuer?</em><br/>
-				A: Das freiLand ist ein solidarisches Projekt. Die CULTUS als Trägerin
-				  des Projektes organisiert den Getränkeverkauf zentral.
-				  Hierfür wird eine bezahlte Stelle finanziert,
-				   die sich um das Sortiment und Handling der Getränke
-				   im Rahmen des Gastro-Deals kümmert</p>
-				<p>
-
-				<em>F:</p>
-        A:
-				<p>
-		</div>
-
-		<form role="form">
 			<div class="row">
 				<div class="col-lg-12">
-					<br/>
-					<h2>Über die Veranstaltung</h2>
-					<div class="form-group">
-						<label for="event_name">Name der Veranstaltung</label>
-						<input type="text" class="form-control" id="event_name" placeholder="Hypergraphia Festival">
-				</div>
-			</div>
-
-      <div class="row">
-				<div class="col-lg-12">
-					<br/>
-					<h2>freiLand Sortiment</h2>
-						<div id="drinks"></div>
-				</div>
-			</div>
-
-				<div class="col-lg-12">
-					<br/>
-					<h2>Eigene Drinks</h2>
-				  <div class="form-group">
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="custom_drink_name" placeholder="Vodka-O">
-						</div>
-            <div class="col-sm-3">
-				      <input type="text" class="form-control" id="custom_drink_price" placeholder="1.50 €">
-						</div>
-				    <div class="col-sm-2">
-                <button onclick="javascript:addCustomDrink();" class="btn btn-primary"> Hinzufügen </button>
-				  </div>
-				  </div>
-				</div>
-			</div>
-   </div>
-
-			<div class="row">
-				<div class="col-lg-12">
-					<br/>
+					<br />
 					<h2>Schritt 3: Antr&auml;ge generieren</h2>
 
 					<p>
-					Bitte vergessen Sie nicht die Antr&auml;ge zu unterschreiben und 
-					&ndash; falls eine Kopie des Personalausweises angefordert
-					wird &ndash; diese anzuh&auml;ngen.
+						Bitte vergessen Sie nicht die Antr&auml;ge zu unterschreiben und
+						&ndash; falls eine Kopie des Personalausweises angefordert
+						wird &ndash; diese anzuh&auml;ngen.
 					</p>
 
-					<button onclick="javascript:updatePane();return false;" class="btn btn-default">Vorschau anzeigen</button>
+					<button onclick="javascript:updatePane();return false;" class="btn btn-default">Vorschau anzeigen
+					</button>
 					<button onclick="javascript:savePDF();return false;" class="btn btn-default">PDF speichern</button>
 
-					<iframe class="preview-pane" width="100%" height="650" frameborder="0" style="margin-top:10px;display:none;"></iframe>
+					<iframe
+						class="preview-pane" width="100%" height="650" frameborder="0"
+						style="margin-top:10px;display:none;"
+					></iframe>
 				</div>
 			</div>
-		</form>
+			</form>
 
-		<div class="row">
-			<div class="col-lg-4 pull-right">
-				<br/>&nbsp;<br/>
+			<div class="row">
+				<div class="col-lg-4 pull-right">
+					<br />&nbsp;<br />
 
-				<p class="text-muted">
-					<a href="https://github.com/netzwerkrecherche/fragdendienst">
-						<img src="img/GitHub-Mark-32px.png" alt="GitHub" class="pull-right" style="margin-left:10px;margin-top:5px;" />
-					</a>
-					<small>
-						Der Quelltext dieser Anwendung ist transparent einsehbar und
-						frei lizensiert auf <a href="https://github.com/chsterz/priceless">GitHub</a>
-						verf&uuml;gbar.<br/>
-						Basierend auf : <a href="https://github.com/profemo/ausgen">Dem freien Auskunftsgenerator für eure Daten</a>.
-					</small>
-					<small class="pull-right" style="width:32px;text-align:center;">
-						v1.0
-					</small>
-				</p>
+					<p class="text-muted">
+						<a href="https://github.com/netzwerkrecherche/fragdendienst">
+							<img
+								src="img/GitHub-Mark-32px.png" alt="GitHub" class="pull-right"
+								style="margin-left:10px;margin-top:5px;"
+							/>
+						</a>
+						<small>
+							Der Quelltext dieser Anwendung ist transparent einsehbar und
+							frei lizensiert auf <a href="https://github.com/chsterz/priceless">GitHub</a>
+							verf&uuml;gbar.<br />
+							Basierend auf : <a href="https://github.com/profemo/ausgen">Dem freien Auskunftsgenerator
+							                                                            für eure Daten</a>.
+						</small>
+						<small class="pull-right" style="width:32px;text-align:center;">
+							v1.0
+						</small>
+					</p>
 
-				<br/>&nbsp;<br/>
+					<br />&nbsp;<br />
+				</div>
+			</div>
+
+			<div class="col-sm-2">
+				<button type="button" id="clearLocalStorage" class="btn btn-danger">Preisliste vergessen</button>
 			</div>
 		</div>
-	</div>
 
-	<!-- Include all compiled plugins (below), or include individual files as needed 
-	<script src="js/libs/bootstrap.min.js"></script>-->
+		<!-- Include all compiled plugins (below), or include individual files as needed
+		<script src="js/libs/bootstrap.min.js"></script>-->
 
-</body>
+	</body>
 </html>
